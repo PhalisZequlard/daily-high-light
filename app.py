@@ -18,11 +18,29 @@ def load_config():
 
 def load_data():
     """載入數據文件"""
+    default_data = {
+        "tasks": [
+            {"title": "範例待辦事項", "completed": False}
+        ],  
+        "habits": [
+            {"name": "運動", "completed": [False] * 7}
+        ],
+        "reminders": [
+            {"time": "09:00", "content": "範例提醒"}
+        ],
+        "schedule": [
+            {"time": "10:00", "title": "範例行程"}
+        ]
+    }
+    
     try:
-        with open(DATA_PATH, 'r', encoding='utf-8') as f:
+        with open(DATA_PATH, 'r', encoding='utf-8') as f: 
             return json.load(f)
     except FileNotFoundError:
-        return {"tasks": [], "habits": [], "reminders": [], "schedule": []}
+        # if nono file, create a new one
+        with open(DATA_PATH, 'w', encoding='utf-8') as f:
+            json.dump(default_data, f, ensure_ascii=False, indent=2)
+        return default_data
 
 def save_data(data):
     """保存數據到文件"""
@@ -71,13 +89,15 @@ def get_ollama_summary(text):
         2. 需要特別注意的提醒
         3. 建議與鼓勵
         
-        請用溫暖積極的語氣撰寫。
+        附註：
+        - 回應不需要包含標題“每日總結”
+        - 請用溫暖積極的語氣撰寫。
         """
         
         response = requests.post(
             'http://localhost:11434/api/generate',
             json={
-                "model": "llama2",
+                "model": "llama3.1:8b",
                 "prompt": prompt.format(text=text),
                 "stream": False,
                 "options": {
@@ -99,7 +119,7 @@ def get_ollama_summary(text):
     except requests.exceptions.Timeout:
         return "請求超時，請稍後再試。"
     except Exception as e:
-        return f"生成摘要時發生錯誤: {str(e)}\n請確保 Ollama 服務正常運行，並已安裝 llama2 模型。"
+        return f"生成摘要時發生錯誤: {str(e)}\n請確保 Ollama 服務正常運行，並已安裝 llama3.1:8b 模型。"
 
 @app.route('/')
 def index():
@@ -125,10 +145,10 @@ def generate_summary():
     """生成每日摘要"""
     data = load_data()
     summary_text = f"""
-    今日行程：{', '.join(data['schedule'])}
+    今日行程：{', '.join(event['title'] for event in data['schedule'])}
     待辦事項：{', '.join(task['title'] for task in data['tasks'])}
     習慣追蹤：{', '.join(habit['name'] for habit in data['habits'])}
-    提醒事項：{', '.join(data['reminders'])}
+    提醒事項：{', '.join(reminder['content'] for reminder in data['reminders'])}
     """
     summary = get_ollama_summary(summary_text)
     return jsonify({'summary': summary})
