@@ -1,0 +1,62 @@
+{
+    "schedule": [
+      {
+        "time": "11:00",
+        "title": "醫生預約",
+        "location": "診所",
+        "description": "年度健康檢查"
+      },
+      {
+        "time": "17:30",
+        "title": "晚餐會",
+        "location": "餐廳",
+        "description": "與朋友聚會"
+      }
+    ],
+    "tasks": [
+      {
+        "title": "整理文件",
+        "priority": "medium",
+        "deadline": "2024-12-30",
+        "completed": false,
+        "category": "工作"
+      },
+      {
+        "title": "修理腳踏車",
+        "priority": "low",
+        "deadline": "2024-12-31",
+        "completed": false,
+        "category": "個人"
+      }
+    ],
+    "habits": [
+      {
+        "name": "減少螢幕時間",
+        "type": "health",
+        "target": "daily",
+        "completed": [true, false, false, true, true, true, false],
+        "streak": 3
+      },
+      {
+        "name": "與家人通話",
+        "type": "social",
+        "target": "weekly",
+        "completed": [true, true, false, true, false, false, true],
+        "streak": 1
+      }
+    ],
+    "reminders": [
+      {
+        "time": "07:00",
+        "content": "叫醒孩子",
+        "priority": "medium",
+        "repeat": "daily"
+      },
+      {
+        "time": "19:30",
+        "content": "餵養寵物",
+        "priority": "high",
+        "repeat": "daily"
+      }
+    ]
+  }

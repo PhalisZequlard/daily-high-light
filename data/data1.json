@@ -1,0 +1,62 @@
+{
+  "schedule": [
+    {
+      "time": "10:00",
+      "title": "技術討論會",
+      "location": "線上會議室",
+      "description": "新功能開發"
+    },
+    {
+      "time": "16:00",
+      "title": "團隊聚會",
+      "location": "咖啡廳",
+      "description": "團隊成員互動"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "更新簡報",
+      "priority": "medium",
+      "deadline": "2024-12-27",
+      "completed": false,
+      "category": "工作"
+    },
+    {
+      "title": "購買雜貨",
+      "priority": "low",
+      "deadline": "2024-12-28",
+      "completed": true,
+      "category": "個人"
+    }
+  ],
+  "habits": [
+    {
+      "name": "喝水2公升",
+      "type": "health",
+      "target": "daily",
+      "completed": [true, true, true, true, true, false, true],
+      "streak": 4
+    },
+    {
+      "name": "閱讀30分鐘",
+      "type": "education",
+      "target": "daily",
+      "completed": [true, false, true, true, false, false, true],
+      "streak": 2
+    }
+  ],
+  "reminders": [
+    {
+      "time": "08:00",
+      "content": "喝第一杯水",
+      "priority": "low",
+      "repeat": "daily"
+    },
+    {
+      "time": "20:00",
+      "content": "準備明天資料",
+      "priority": "medium",
+      "repeat": "daily"
+    }
+  ]
+}

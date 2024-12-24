@@ -1,0 +1,62 @@
+{
+    "schedule": [
+      {
+        "time": "08:30",
+        "title": "晨間運動",
+        "location": "公園",
+        "description": "跑步與瑜伽"
+      },
+      {
+        "time": "15:00",
+        "title": "專案會議",
+        "location": "會議室B",
+        "description": "檢視進度"
+      }
+    ],
+    "tasks": [
+      {
+        "title": "測試系統",
+        "priority": "high",
+        "deadline": "2024-12-26",
+        "completed": false,
+        "category": "工作"
+      },
+      {
+        "title": "繳水電費",
+        "priority": "low",
+        "deadline": "2024-12-29",
+        "completed": true,
+        "category": "個人"
+      }
+    ],
+    "habits": [
+      {
+        "name": "學習新語言",
+        "type": "education",
+        "target": "daily",
+        "completed": [true, true, false, false, true, true, true],
+        "streak": 1
+      },
+      {
+        "name": "整理房間",
+        "type": "organization",
+        "target": "weekly",
+        "completed": [true, false, true, false, true, false, true],
+        "streak": 2
+      }
+    ],
+    "reminders": [
+      {
+        "time": "09:00",
+        "content": "吃早餐",
+        "priority": "low",
+        "repeat": "daily"
+      },
+      {
+        "time": "21:00",
+        "content": "檢查明日計畫",
+        "priority": "medium",
+        "repeat": "weekly"
+      }
+    ]
+  }
