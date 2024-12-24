@@ -1,0 +1,62 @@
+{
+    "schedule": [
+      {
+        "time": "09:00",
+        "title": "晨會",
+        "location": "線上會議室",
+        "description": "每週進度報告"
+      },
+      {
+        "time": "14:30",
+        "title": "客戶會議",
+        "location": "會議室A",
+        "description": "專案討論"
+      }
+    ],
+    "tasks": [
+      {
+        "title": "完成報告",
+        "priority": "high",
+        "deadline": "2024-12-24",
+        "completed": false,
+        "category": "工作"
+      },
+      {
+        "title": "預約牙醫",
+        "priority": "medium",
+        "deadline": "2024-12-25",
+        "completed": true,
+        "category": "個人"
+      }
+    ],
+    "habits": [
+      {
+        "name": "運動30分鐘",
+        "type": "health",
+        "target": "daily",
+        "completed": [true, true, false, true, false, false, true],
+        "streak": 3
+      },
+      {
+        "name": "冥想",
+        "type": "mindfulness",
+        "target": "daily",
+        "completed": [true, true, true, false, true, true, false],
+        "streak": 5
+      }
+    ],
+    "reminders": [
+      {
+        "time": "12:00",
+        "content": "吃午餐藥",
+        "priority": "high",
+        "repeat": "daily"
+      },
+      {
+        "time": "18:30",
+        "content": "打電話給媽媽",
+        "priority": "medium",
+        "repeat": "weekly"
+      }
+    ]
+  }
