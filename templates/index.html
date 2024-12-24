@@ -101,8 +101,13 @@
     <script>
         async function generateSummary() {
             const summaryDiv = document.getElementById('summary');
+            const summaryButton = document.querySelector('button');
+            
+            // 顯示載入狀態
             summaryDiv.classList.remove('hidden');
-            summaryDiv.innerHTML = '正在生成總結...';
+            summaryDiv.innerHTML = '<div class="animate-pulse">正在生成總結中，請稍候...</div>';
+            summaryButton.disabled = true;
+            summaryButton.classList.add('opacity-50');
             
             try {
                 const response = await fetch('/api/summary', {
@@ -111,10 +116,33 @@
                         'Content-Type': 'application/json'
                     }
                 });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const data = await response.json();
-                summaryDiv.innerHTML = data.summary;
+                
+                // 格式化顯示摘要
+                summaryDiv.innerHTML = `
+                    <div class="prose">
+                        <h3 class="text-lg font-semibold mb-2">今日總結</h3>
+                        <div class="whitespace-pre-line">${data.summary}</div>
+                    </div>
+                `;
             } catch (error) {
-                summaryDiv.innerHTML = '生成總結時發生錯誤';
+                console.error('Error:', error);
+                summaryDiv.innerHTML = `
+                    <div class="text-red-500">
+                        <p>生成總結時發生錯誤</p>
+                        <p class="text-sm">${error.message}</p>
+                        <button onclick="generateSummary()" class="mt-2 text-blue-500 underline">重試</button>
+                    </div>
+                `;
+            } finally {
+                // 恢復按鈕狀態
+                summaryButton.disabled = false;
+                summaryButton.classList.remove('opacity-50');
             }
         }
     </script>
