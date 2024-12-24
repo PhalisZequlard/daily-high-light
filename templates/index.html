@@ -8,13 +8,13 @@
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
-        <!-- 頂部信息 -->
+        <!-- top date/time -->
         <div class="flex justify-between items-center mb-8">
             <div class="text-2xl font-bold">{{ date }}</div>
             <div class="text-xl">{{ time }}</div>
         </div>
 
-        <!-- 天氣信息 -->
+        <!-- weather and some thing -->
         <div class="bg-white rounded-lg shadow p-4 mb-6">
             <h2 class="text-lg font-semibold mb-2">天氣信息</h2>
             <div class="flex items-center">
@@ -24,9 +24,9 @@
             </div>
         </div>
 
-        <!-- 主要內容網格 -->
+        <!-- main content -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- 今日行程 -->
+            <!-- today sedgual -->
             <div class="bg-white rounded-lg shadow p-4">
                 <h2 class="text-lg font-semibold mb-2">今日行程</h2>
                 <ul class="space-y-2">
@@ -39,7 +39,7 @@
                 </ul>
             </div>
 
-            <!-- 待辦事項 -->
+            <!-- to do list -->
             <div class="bg-white rounded-lg shadow p-4">
                 <h2 class="text-lg font-semibold mb-2">待辦事項</h2>
                 <ul class="space-y-2">
@@ -52,7 +52,7 @@
                 </ul>
             </div>
 
-            <!-- 健康與習慣追蹤 -->
+            <!-- health and catch up -->
             <div class="bg-white rounded-lg shadow p-4">
                 <h2 class="text-lg font-semibold mb-2">健康與習慣追蹤</h2>
                 <ul class="space-y-2">
@@ -69,7 +69,7 @@
                 </ul>
             </div>
 
-            <!-- 提醒事項 -->
+            <!-- reminder -->
             <div class="bg-white rounded-lg shadow p-4">
                 <h2 class="text-lg font-semibold mb-2">提醒事項</h2>
                 <ul class="space-y-2">
@@ -83,13 +83,13 @@
             </div>
         </div>
 
-        <!-- 每日一句 -->
+        <!-- golden shit -->
         <div class="bg-white rounded-lg shadow p-4 mt-6">
             <h2 class="text-lg font-semibold mb-2">今日鼓勵</h2>
             <p class="italic text-gray-600">{{ quote }}</p>
         </div>
 
-        <!-- AI 總結按鈕 -->
+        <!-- AI summerise -->
         <div class="mt-6">
             <div id="summary" class="mt-4 bg-white rounded-lg shadow p-4 hidden"></div>
             <button onclick="generateSummary()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
@@ -103,7 +103,7 @@
             const summaryDiv = document.getElementById('summary');
             const summaryButton = document.querySelector('button');
             
-            // 顯示載入狀態
+            // show stats
             summaryDiv.classList.remove('hidden');
             summaryDiv.innerHTML = '<div class="animate-pulse">正在生成總結中，請稍候...</div>';
             summaryButton.disabled = true;
@@ -123,7 +123,7 @@
                 
                 const data = await response.json();
                 
-                // 格式化顯示摘要
+                // boxed show info
                 summaryDiv.innerHTML = `
                     <div class="prose">
                         <h3 class="text-lg font-semibold mb-2">今日總結</h3>
@@ -140,7 +140,7 @@
                     </div>
                 `;
             } finally {
-                // 恢復按鈕狀態
+                // renew button status
                 summaryButton.disabled = false;
                 summaryButton.classList.remove('opacity-50');
             }
