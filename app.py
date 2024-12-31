@@ -97,7 +97,7 @@ def get_ollama_summary(text):
         response = requests.post(
             'http://localhost:11434/api/generate',
             json={
-                "model": "llama3.1:8b",
+                "model": "qwen2.5-coder:0.5b",
                 "prompt": prompt.format(text=text),
                 "stream": False,
                 "options": {
@@ -119,7 +119,7 @@ def get_ollama_summary(text):
     except requests.exceptions.Timeout:
         return "請求超時，請稍後再試。"
     except Exception as e:
-        return f"生成摘要時發生錯誤: {str(e)}\n請確保 Ollama 服務正常運行，並已安裝 llama3.1:8b 模型。"
+        return f"生成摘要時發生錯誤: {str(e)}\n請確保 Ollama 服務正常運行，並已安裝 qwen2.5-coder:0.5b 模型。"
 
 @app.route('/')
 def index():
